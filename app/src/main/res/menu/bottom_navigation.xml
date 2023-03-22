@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragmentInicio"
+        android:icon="@android:drawable/ic_menu_compass"
+        android:title="Inicio"/>
+    <item
+        android:id="@+id/fragmentLaboratorios"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="Labs"/>
+    <item
+        android:id="@+id/fragmentReportes"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Reportes"/>
+    <item
+        android:id="@+id/fragmentMas"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="Mas"/>
+</menu>

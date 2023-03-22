@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Centro de Cómputo</string>
+    <string name="Bienvenida">Bienvenidos</string>
+    <string name="Iniciar">Iniciar</string>
+    <string name="Sesion">Iniciar Sesión</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
