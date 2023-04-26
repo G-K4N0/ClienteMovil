@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/fragmentInicio"
-        android:icon="@android:drawable/ic_menu_compass"
-        android:title="Inicio"/>
+        android:icon="@mipmap/ic_inicio_foreground"
+        android:title="@string/inicio" />
     <item
         android:id="@+id/fragmentLaboratorios"
-        android:icon="@android:drawable/ic_dialog_info"
-        android:title="Labs"/>
+        android:icon="@mipmap/ic_lab_foreground"
+        android:title="@string/labs" />
     <item
         android:id="@+id/fragmentReportes"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:title="Reportes"/>
+        android:icon="@mipmap/ic_reporte_foreground"
+        android:title="@string/reportes" />
+    <item
+        android:id="@+id/fragmentAviso"
+        android:icon="@mipmap/ic_aviso_foreground"
+        android:title="@string/aviso" />
     <item
         android:id="@+id/fragmentMas"
-        android:icon="@android:drawable/ic_input_add"
-        android:title="Mas"/>
+        android:icon="@mipmap/ic_menu_foreground"
+        android:title="@string/mas" />
 </menu>
