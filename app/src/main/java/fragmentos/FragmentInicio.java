@@ -7,8 +7,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.talentounido.cliente.R;
+
+import java.util.ArrayList;
+
+import adaptadores.AdapterLabsInicio;
+import modelo.HorarioActual;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +25,9 @@ import com.talentounido.cliente.R;
  */
 public class FragmentInicio extends Fragment {
 
+    private ListView listView;
+    private Adapter adapterLabs;
+    private ArrayList<HorarioActual> horarioActuals;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -48,7 +59,14 @@ public class FragmentInicio extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+        View view = inflater.inflate(R.layout.fragment_inicio, container, false);
+        listView = view.findViewById(R.id.lst_inicio_labs);
+
+        horarioActuals = new ArrayList<>();
+        horarioActuals.add(new HorarioActual(1, "08:00", "10:00", "Laboratorio 1", "POO", "Docente 1", true));
+
+        adapterLabs = new AdapterLabsInicio(horarioActuals, getActivity());
+        listView.setAdapter((ListAdapter) adapterLabs);
+        return view;
     }
 }
