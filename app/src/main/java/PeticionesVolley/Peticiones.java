@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,7 +19,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import fragmentos.FragmentLaboratorios;
+import modelo.Reporte;
 
 public class Peticiones {
     private static final String BASE_URL = "https://centroapi.azurewebsites.net/";
@@ -85,6 +84,38 @@ public class Peticiones {
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, successListener,errorListener) {
             @Override
             public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+        peticion.add(request);
+    }
+
+    public static void getAvisos(String token, Response.Listener<JSONArray> successListener, Response.ErrorListener errorListener) {
+        String url = BASE_URL+"avisos";
+
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,url,null,successListener,errorListener){
+            @Override
+            public Map<String, String> getHeaders(){
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+        peticion.add(request);
+    }
+
+    public static void postReporte (String token, Reporte reporte, Response.Listener<JSONObject> successListener, Response.ErrorListener errorListener) throws JSONException {
+        String url = BASE_URL + "reportes";
+
+        JSONObject data = new JSONObject();
+        data.put("usuario",reporte.getIdUsuario());
+        data.put("titulo",reporte.getTitulo());
+        data.put("problema", reporte.getProblema());
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url,data,successListener, errorListener){
+            @Override
+            public Map<String, String> getHeaders(){
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Authorization", "Bearer " + token);
                 return headers;
