@@ -1,30 +1,30 @@
 package modelo;
 
 public class Reporte {
-    private String nota;
-    private String sugerencia;
+    private String titulo;
+    private String problema;
     private int idUsuario;
 
     public Reporte(String nota, String sugerencia, int idUsuario) {
-        this.nota = nota;
-        this.sugerencia = sugerencia;
+        this.titulo = nota;
+        this.problema = sugerencia;
         this.idUsuario = idUsuario;
     }
 
-    public String getNota() {
-        return nota;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNota(String nota) {
-        this.nota = nota;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getSugerencia() {
-        return sugerencia;
+    public String getProblema() {
+        return problema;
     }
 
-    public void setSugerencia(String sugerencia) {
-        this.sugerencia = sugerencia;
+    public void setProblema(String problema) {
+        this.problema = problema;
     }
 
     public int getIdUsuario() {
