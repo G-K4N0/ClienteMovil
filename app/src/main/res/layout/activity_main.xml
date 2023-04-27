@@ -24,31 +24,40 @@
 
     <Button
         android:id="@+id/btnIniciar"
+        style="@style/Widget.Material3.Button.TextButton.Icon"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/naranja"
-        android:text="@string/Iniciar"
+
         android:textColor="@color/azul"
         android:textSize="20sp"
+        app:icon="@mipmap/ic_entrar_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
-    <ImageView
+    <androidx.cardview.widget.CardView
         android:id="@+id/imageView2"
-        android:layout_width="234dp"
-        android:layout_height="213dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:cardBackgroundColor="#FDFDFD"
+        app:cardCornerRadius="100dp"
         android:layout_marginStart="143dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="160dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBienvenida"
-        app:srcCompat="@mipmap/ic_pantera_foreground"
-        tools:srcCompat="@mipmap/ic_pantera_foreground" />
+        android:layout_gravity="center_horizontal|center_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/txtBienvenida">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@mipmap/ic_pantera_foreground" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
