@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginTop="5dp"
-    android:layout_marginRight="15dp"
-    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="15sp"
+    android:layout_marginTop="5sp"
+    android:layout_marginRight="15sp"
+    android:layout_marginBottom="5sp"
     app:cardCornerRadius="10dp"
     app:cardElevation="4dp">
 
@@ -37,7 +37,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-
                 android:textColor="@color/black"/>
         </LinearLayout>
 
@@ -62,8 +61,15 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/naranja"
                 android:textSize="18sp"
+                android:gravity="center_horizontal"
                 android:layout_marginTop="16sp"
+                android:layout_marginLeft="4sp"
+                android:layout_marginRight="4sp"
                 android:textStyle="bold"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeMaxTextSize="30sp"
+                app:autoSizeStepGranularity="2sp"
                 />
 
             <TextView
