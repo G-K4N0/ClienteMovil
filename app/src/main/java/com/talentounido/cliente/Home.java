@@ -11,19 +11,18 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import PeticionesVolley.Peticiones;
-import fragmentos.AvisoFragment;
-import fragmentos.FragmentInicio;
-import fragmentos.FragmentLaboratorios;
-import fragmentos.FragmentMas;
-import fragmentos.FragmentReportes;
+import com.talentounido.cliente.fragmentos.FragmentAviso;
+import com.talentounido.cliente.fragmentos.FragmentInicio;
+import com.talentounido.cliente.fragmentos.FragmentLaboratorios;
+import com.talentounido.cliente.fragmentos.FragmentMas;
+import com.talentounido.cliente.fragmentos.FragmentReportes;
 
 public class Home extends AppCompatActivity implements  FragmentLaboratorios.OnFragmentInteractionListener{
 
     FragmentInicio fragmentInicio = new FragmentInicio();
     FragmentLaboratorios fragmentLaboratorios = new FragmentLaboratorios();
     FragmentReportes fragmentReportes = new FragmentReportes();
-    AvisoFragment fragmentAviso = new AvisoFragment();
+    FragmentAviso fragmentAviso = new FragmentAviso();
     FragmentMas fragmentMas = new FragmentMas();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
