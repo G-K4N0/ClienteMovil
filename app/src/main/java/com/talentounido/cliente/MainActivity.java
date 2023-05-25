@@ -7,10 +7,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 
-import fragmentos.FragmentLaboratorios;
+import com.talentounido.cliente.fragmentos.FragmentLaboratorios;
 
 public class MainActivity extends AppCompatActivity implements FragmentLaboratorios.OnFragmentInteractionListener {
-private Button btnIniciar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,9 +17,9 @@ private Button btnIniciar;
         setBtnIniciar();
     }
     public void setBtnIniciar(){
-        btnIniciar = findViewById(R.id.btnIniciar);
+        Button btnIniciar = findViewById(R.id.btnIniciar);
         btnIniciar.setOnClickListener(v -> {
-            Intent home = new Intent(MainActivity.this, Home.class);
+            Intent home = new Intent(MainActivity.this, Login.class);
             startActivity(home);
         });
     }
