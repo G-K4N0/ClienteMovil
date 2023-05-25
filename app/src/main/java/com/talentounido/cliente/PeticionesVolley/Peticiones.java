@@ -1,4 +1,4 @@
-package PeticionesVolley;
+package com.talentounido.cliente.PeticionesVolley;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,10 +19,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import modelo.Reporte;
+import com.talentounido.cliente.modelo.RegisterContent;
+import com.talentounido.cliente.modelo.Reporte;
 
 public class Peticiones {
-    private static final String BASE_URL = "https://centroapi.azurewebsites.net/";
+    private static final String url1 = "http://192.168.3.117:8080/";
+    private static final String remoteUrl="https://centroapi.azurewebsites.net/";
+    private static final String BASE_URL = url1;
 
     private static RequestQueue peticion;
 
@@ -67,9 +70,9 @@ public class Peticiones {
         };
         peticion.add(request);
     }
-    public static void getHorarios(String token,int id, Response.Listener<JSONArray> successListener, Response.ErrorListener errorListener) {
-        String url = BASE_URL + "horarios/" + id;
-        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, successListener,errorListener) {
+    public static void getHorariosByDias(String token, Response.Listener<JSONArray> succesListener, Response.ErrorListener errorListener){
+        String url = BASE_URL + "horarios/dias";
+        JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET,url,null, succesListener,errorListener ){
             @Override
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
@@ -80,7 +83,7 @@ public class Peticiones {
         peticion.add(request);
     }
     public static void getHorariosByDocente(String token,int id, Response.Listener<JSONArray> successListener, Response.ErrorListener errorListener) {
-        String url = BASE_URL + "horarios/docente/" + id;
+        String url = BASE_URL + "horarios/docente/" + id + "/dias";
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url,null, successListener,errorListener) {
             @Override
             public Map<String, String> getHeaders() {
@@ -92,6 +95,40 @@ public class Peticiones {
         peticion.add(request);
     }
 
+    public static void postCreateRegister(String token, RegisterContent content, Response.Listener<JSONObject> successListener, Response.ErrorListener errorListener) throws JSONException {
+        String url = BASE_URL + "registros/create/";
+
+        JSONObject jsonContent = new JSONObject();
+
+        jsonContent.put("idHorario", content.getIdHorario());
+        jsonContent.put("actividad", content.getActividad());
+        jsonContent.put("laboratorio", content.getLabName());
+        JsonObjectRequest createRequest = new JsonObjectRequest(Request.Method.POST, url,jsonContent,successListener,errorListener){
+            @Override
+            public Map<String, String> getHeaders(){
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer "+ token);
+                return headers;
+            }
+        };
+        peticion.add(createRequest);
+    }
+
+    public static void postAlumnosAtendidos(String token,int idRegister, int alumnos, Response.Listener<JSONObject> succesListener, Response.ErrorListener errorListener) throws JSONException {
+        String url = BASE_URL + "registros/complete/" + idRegister;
+        JSONObject alumnosData = new JSONObject();
+        alumnosData.put("alumnos", alumnos);
+
+        JsonObjectRequest completeRegister = new JsonObjectRequest(Request.Method.PUT,url, alumnosData,succesListener,errorListener){
+            @Override
+            public Map<String, String> getHeaders(){
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer "+ token);
+                return headers;
+            }
+        };
+        peticion.add(completeRegister);
+    }
     public static void getAvisos(String token, Response.Listener<JSONArray> successListener, Response.ErrorListener errorListener) {
         String url = BASE_URL+"avisos";
 
