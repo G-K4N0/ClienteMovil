@@ -1,32 +1,27 @@
-package modelo;
+package com.talentounido.cliente.modelo;
 
 public class HorarioActual {
-    private int id;
     private String inicio;
     private String fin;
     private String labNombre;
     private String materia;
     private String docente;
+    private String carrera;
+    private String grupo;
+    private String image;
     private boolean isOcupado;
 
-    public HorarioActual(int id, String inicio, String fin, String labNombre, String materia, String docente, boolean isOcupado) {
-        this.id = id;
+    public HorarioActual(String inicio, String fin, String labNombre, String materia, String carrera, String grupo, String docente, String image, boolean isOcupado) {
         this.inicio = inicio;
         this.fin = fin;
         this.labNombre = labNombre;
         this.materia = materia;
+        this.grupo = grupo;
         this.docente = docente;
+        this.carrera = carrera;
+        this.image = image;
         this.isOcupado = isOcupado;
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getInicio() {
         return inicio;
     }
@@ -73,5 +68,28 @@ public class HorarioActual {
 
     public void setOcupado(boolean ocupado) {
         this.isOcupado = ocupado;
+    }
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -1,4 +1,4 @@
-package modelo;
+package com.talentounido.cliente.modelo;
 
 public class User {
     private int id;
