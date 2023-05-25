@@ -1,9 +1,10 @@
-package fragmentos;
+package com.talentounido.cliente.fragmentos;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.talentounido.cliente.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.talentounido.cliente.PeticionesVolley.Peticiones;
+import com.talentounido.cliente.modelo.Reporte;
+
 public class FragmentReportes extends Fragment {
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -22,6 +32,7 @@ public class FragmentReportes extends Fragment {
     private String mParam2;
     private EditText txtLaboratorios,txtProblema, txtDescripcion;
     private Button btnReportar;
+    private String token;
 
     public FragmentReportes() {
     }
@@ -59,9 +70,37 @@ public class FragmentReportes extends Fragment {
     private void click(){
         btnReportar.setOnClickListener(view -> {
             String lab = txtLaboratorios.getText().toString();
-            String problema = txtProblema.getText().toString();
-            String descripcion = txtDescripcion.getText().toString();
-            Toast.makeText(getActivity(), lab + problema + descripcion, Toast.LENGTH_SHORT).show();
+            String titulo = txtProblema.getText().toString();
+            String problema = txtDescripcion.getText().toString();
+            try {
+                Reporte reporte = new Reporte(lab,titulo, problema, getIdUser(token));
+
+                postReporte(reporte);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
         });
+    }
+
+    private void postReporte (Reporte reporte) throws JSONException {
+        token = Peticiones.getToken(getActivity());
+
+        Peticiones.postReporte(token, reporte, response -> {
+            try {
+                String message = response.getString("message");
+                Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+        }, error -> Toast.makeText(getActivity(), "Reporte fallido, intentalo mas tarde", Toast.LENGTH_SHORT).show());
+    }
+
+    private int getIdUser(String token) throws JSONException {
+        int id;
+        DecodedJWT jwt = JWT.decode(token);
+        String payload = jwt.getPayload();
+        JSONObject payloadJson = new JSONObject(new String(Base64.decode(payload, Base64.URL_SAFE)));
+        id = payloadJson.getInt("id");
+        return id;
     }
 }
