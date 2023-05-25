@@ -1,4 +1,4 @@
-package adaptadores;
+package com.talentounido.cliente.adaptadores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import com.talentounido.cliente.R;
 
 import java.util.ArrayList;
 
-import modelo.Aviso;
+import com.talentounido.cliente.modelo.Aviso;
 
 public class AdapterAviso extends BaseAdapter {
     private ArrayList<Aviso> listaAviso;

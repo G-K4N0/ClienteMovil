@@ -1,4 +1,4 @@
-package adaptadores;
+package com.talentounido.cliente.adaptadores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
@@ -15,7 +14,7 @@ import com.talentounido.cliente.R;
 
 import java.util.ArrayList;
 
-import modelo.HorarioActual;
+import com.talentounido.cliente.modelo.HorarioActual;
 
 public class AdapterLabsInicio extends BaseAdapter {
 
@@ -74,7 +73,6 @@ public class AdapterLabsInicio extends BaseAdapter {
         } else {
             holder.layoutIsOcupado.setBackgroundColor(ContextCompat.getColor(context, R.color.green));
         }
-        view.setOnClickListener(v -> Toast.makeText(context, "Has hecho clic en el elemento " + i, Toast.LENGTH_SHORT).show());
         return view;
     }
 

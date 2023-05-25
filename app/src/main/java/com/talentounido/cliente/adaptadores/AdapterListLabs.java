@@ -1,4 +1,4 @@
-package adaptadores;
+package com.talentounido.cliente.adaptadores;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,11 +12,11 @@ import com.talentounido.cliente.R;
 
 import java.util.ArrayList;
 
-import modelo.Horario;
+import com.talentounido.cliente.modelo.Horario;
 
 public class AdapterListLabs extends BaseAdapter{
 
-    private ArrayList<Horario> horarios = new ArrayList<>();
+    private ArrayList<Horario> horarios;
     private final int layout;
     private final Context context;
 
@@ -47,7 +47,6 @@ public class AdapterListLabs extends BaseAdapter{
         holder = new ViewHolder();
         holder.txtMateria = convertView.findViewById(R.id.txt_lab_detail_materia);
         holder.txtCarrera = convertView.findViewById(R.id.txt_lab_detail_carrera);
-        holder.txtSemestre = convertView.findViewById(R.id.txt_lab_detail_semestre);
         holder.txtEntradaSalida = convertView.findViewById(R.id.txt_lab_detail_entrada_salida);
         holder.txtDia = convertView.findViewById(R.id.txt_lab_detail_dia);
           holder.txtGrupo = convertView.findViewById(R.id.txt_lab_detail_grupo);
@@ -58,14 +57,12 @@ public class AdapterListLabs extends BaseAdapter{
 
         String materia = horarios.get(position).getMateria();
         String carrera = horarios.get(position).getCarrera();
-        String semestre = horarios.get(position).getSemestre();
-        String entrada_salida = horarios.get(position).getHoraEntrada()+" - " + horarios.get(position).getHoraSalida();
+        String entrada_salida = horarios.get(position).getInicia()+" - " + horarios.get(position).getFinaliza();
         String dia = horarios.get(position).getDia();
         String grupo = horarios.get(position).getGrupo();
 
         holder.txtMateria.setText(materia);
         holder.txtCarrera.setText(carrera);
-        holder.txtSemestre.setText(semestre);
         holder.txtEntradaSalida.setText(entrada_salida);
         holder.txtDia.setText(dia);
         holder.txtGrupo.setText(grupo);
@@ -75,7 +72,7 @@ public class AdapterListLabs extends BaseAdapter{
     static class ViewHolder{
       private TextView txtMateria;
         private TextView txtCarrera;
-        private TextView txtSemestre;
+
         private TextView txtEntradaSalida;
         private TextView txtDia;
         private TextView txtGrupo;
