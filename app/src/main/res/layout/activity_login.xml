@@ -41,20 +41,20 @@
         android:layout_marginEnd="64dp"
         android:hint="Ingresa tu contraseña"
         app:boxBackgroundMode="outline"
+        app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtContainerUsuario"
-        app:endIconMode="password_toggle"
         app:passwordToggleTint="@color/naranja"
-        >
+        app:passwordToggleTintMode="screen">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtPwd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:singleLine="true"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

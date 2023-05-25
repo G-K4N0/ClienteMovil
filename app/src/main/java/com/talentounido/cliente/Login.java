@@ -1,7 +1,5 @@
 package com.talentounido.cliente;
 
-import static com.google.android.material.textfield.TextInputLayout.END_ICON_PASSWORD_TOGGLE;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -20,16 +18,16 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import PeticionesVolley.Peticiones;
+import com.talentounido.cliente.PeticionesVolley.Peticiones;
 
 import com.google.android.material.progressindicator.CircularProgressIndicator;
-import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Objects;
 
 public class Login extends AppCompatActivity {
 private EditText txtUsuario,txtPwd;
 private  String usuario,pwd;
 private Button btnLogin;
-    private Handler handler = new Handler();
 private CircularProgressIndicator indicator;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -44,25 +42,8 @@ private CircularProgressIndicator indicator;
         iniciarSesion();
 
         indicator = findViewById(R.id.materialIndicator);
-        indicator.setIndeterminate(false);
+        indicator.setIndeterminate(true);
         indicator.setVisibility(View.INVISIBLE);
-        setProgress();
-    }
-
-    private void setProgress(){
-        final int[] progress = {0};
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                progress[0] += 10;
-                indicator.setProgress(progress[0], true);
-                if (progress[0] == 100){
-                    handler.removeCallbacks(this);
-                } else {
-                    handler.postDelayed(this, 1000);
-                }
-            }
-        });
     }
 
     private void iniciarSesion()
@@ -72,22 +53,18 @@ private CircularProgressIndicator indicator;
             usuario = txtUsuario.getText().toString();
             pwd = txtPwd.getText().toString();
             if (!usuario.isEmpty() && !pwd.isEmpty()){
-                indicator.setVisibility(View.VISIBLE);
                 indicator.setIndeterminate(true);
-                indicator.setIndicatorDirection(CircularProgressIndicator.INDICATOR_DIRECTION_COUNTERCLOCKWISE);
-                indicator.animate();
-                indicator.setActivated(true);
-                indicator.invalidate();
+                indicator.setVisibility(View.VISIBLE);
                 Peticiones.login(usuario,pwd, response -> {
                     try {
                         String token = response.getString("token");
                         DecodedJWT jwt = JWT.decode(token);
                         String payload = jwt.getPayload();
                         JSONObject payloadJson =  new JSONObject(new String(Base64.decode(payload,Base64.URL_SAFE)));
-
                         String rol = payloadJson.getString("privilegio");
+                        JSONObject priv = new JSONObject(rol);
 
-                        if (getString(R.string.docente).equals(rol)){
+                        if (getString(R.string.docente).equals(priv.getString("name"))){
                             Peticiones.setToken(this, token);
                             Intent home = new Intent(this, Home.class);
                             indicator.setVisibility(View.INVISIBLE);
@@ -102,8 +79,14 @@ private CircularProgressIndicator indicator;
                         indicator.setVisibility(View.INVISIBLE);
                     }
                 },error ->{
-                    Toast.makeText(this, "No es posible conectar con el servicio", Toast.LENGTH_SHORT).show();
-                    indicator.setVisibility(View.INVISIBLE);
+
+                    if (Objects.requireNonNull(error.getMessage()).contains("ConnectException")){
+                        Toast.makeText(this, "Revisa tu conexión a internet", Toast.LENGTH_SHORT).show();
+                        indicator.setVisibility(View.INVISIBLE);
+                    }else{
+                        indicator.setVisibility(View.INVISIBLE);
+                    }
+
                 });
             }else{
                 Toast.makeText(this, "No dejes campos vacios", Toast.LENGTH_SHORT).show();
