@@ -25,7 +25,7 @@ import com.talentounido.cliente.modelo.Reporte;
 public class Peticiones {
     private static final String url1 = "http://192.168.3.117:8080/";
     private static final String remoteUrl="https://centroapi.azurewebsites.net/";
-    private static final String BASE_URL = url1;
+    private static final String BASE_URL = remoteUrl;
 
     private static RequestQueue peticion;
 
