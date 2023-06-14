@@ -2,12 +2,12 @@ package com.talentounido.cliente.modelo;
 
 public class RegisterContent {
     private int idHorario;
-    private String actividad;
+    private int idActividad;
     private String labName;
 
-    public RegisterContent(int idHorario, String actividad, String labName) {
+    public RegisterContent(int idHorario, int idActividad, String labName) {
         this.idHorario = idHorario;
-        this.actividad = actividad;
+        this.idActividad = idActividad;
         this.labName = labName;
     }
 
@@ -19,12 +19,12 @@ public class RegisterContent {
         this.idHorario = idHorario;
     }
 
-    public String getActividad() {
-        return actividad;
+    public int getActividad() {
+        return idActividad;
     }
 
-    public void setActividad(String actividad) {
-        this.actividad = actividad;
+    public void setActividad(int idActividad) {
+        this.idActividad = idActividad;
     }
 
     public String getLabName() {
