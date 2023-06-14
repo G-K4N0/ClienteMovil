@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import com.talentounido.cliente.modelo.Aviso;
 
 public class AdapterAviso extends BaseAdapter {
-    private ArrayList<Aviso> listaAviso;
+    private final ArrayList<Aviso> listaAviso;
     private final Context context;
 
     public AdapterAviso (Context context, ArrayList<Aviso> listaAviso){

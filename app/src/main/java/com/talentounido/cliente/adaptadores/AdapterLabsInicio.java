@@ -18,7 +18,7 @@ import com.talentounido.cliente.modelo.HorarioActual;
 
 public class AdapterLabsInicio extends BaseAdapter {
 
-    private ArrayList<HorarioActual> listaHorarios;
+    private final ArrayList<HorarioActual> listaHorarios;
     private final Context context;
 
     public AdapterLabsInicio(ArrayList<HorarioActual> horarioActualArrayList, Context context) {

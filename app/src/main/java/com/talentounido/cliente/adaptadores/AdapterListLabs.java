@@ -16,13 +16,11 @@ import com.talentounido.cliente.modelo.Horario;
 
 public class AdapterListLabs extends BaseAdapter{
 
-    private ArrayList<Horario> horarios;
-    private final int layout;
+    private final ArrayList<Horario> horarios;
     private final Context context;
 
-    public AdapterListLabs(Context context, int layout, ArrayList<Horario> horarios){
+    public AdapterListLabs(Context context, ArrayList<Horario> horarios){
         this.context = context;
-        this.layout = layout;
         this.horarios = horarios;
     }
     @Override
