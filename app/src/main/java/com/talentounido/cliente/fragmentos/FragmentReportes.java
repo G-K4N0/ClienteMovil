@@ -28,8 +28,6 @@ public class FragmentReportes extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
     private EditText txtLaboratorios,txtProblema, txtDescripcion;
     private Button btnReportar;
     private String token;
@@ -50,8 +48,8 @@ public class FragmentReportes extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -69,12 +67,13 @@ public class FragmentReportes extends Fragment {
 
     private void click(){
         btnReportar.setOnClickListener(view -> {
-            String lab = txtLaboratorios.getText().toString();
+            int lab = Integer.parseInt(txtLaboratorios.getText().toString().split(" ")[1]);
             String titulo = txtProblema.getText().toString();
             String problema = txtDescripcion.getText().toString();
+            String token = Peticiones.getPreference(getActivity(),"token");
+            Toast.makeText(getActivity(), "-> " + lab, Toast.LENGTH_SHORT).show();
             try {
                 Reporte reporte = new Reporte(lab,titulo, problema, getIdUser(token));
-
                 postReporte(reporte);
             } catch (JSONException e) {
                 throw new RuntimeException(e);
@@ -83,7 +82,7 @@ public class FragmentReportes extends Fragment {
     }
 
     private void postReporte (Reporte reporte) throws JSONException {
-        token = Peticiones.getToken(getActivity());
+        token = Peticiones.getPreference(getActivity(),getString(R.string.token));
 
         Peticiones.postReporte(token, reporte, response -> {
             try {
@@ -92,7 +91,7 @@ public class FragmentReportes extends Fragment {
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
-        }, error -> Toast.makeText(getActivity(), "Reporte fallido, intentalo mas tarde", Toast.LENGTH_SHORT).show());
+        }, error -> Toast.makeText(getActivity(), "Reporte fallido, intentalo mas tarde" + error.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private int getIdUser(String token) throws JSONException {

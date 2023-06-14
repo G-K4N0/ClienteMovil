@@ -27,20 +27,13 @@ import org.json.JSONObject;
 import com.talentounido.cliente.PeticionesVolley.Peticiones;
 import com.talentounido.cliente.modelo.User;
 
-import com.bumptech.glide.annotation.GlideModule;
-
-import java.util.Arrays;
-
 public class FragmentMas extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
-    private TextView txtNameProfile;
     private Button btnLogout;
-    private ImageView profileImage;
+
     public FragmentMas() {
         // Required empty public constructor
     }
@@ -58,8 +51,8 @@ public class FragmentMas extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -67,26 +60,24 @@ public class FragmentMas extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_mas, container, false);
-        profileImage = vista.findViewById(R.id.imgProfile);
-        txtNameProfile = vista.findViewById(R.id.txtPerfil_usuario);
+        ImageView profileImage = vista.findViewById(R.id.imgProfile);
+        TextView txtNameProfile = vista.findViewById(R.id.txtPerfil_usuario);
 
         btnLogout = vista.findViewById(R.id.btnLogout);
-        String id, name, image, privilegio;
+        String name, image;
 
-        String token = Peticiones.getToken(getActivity());
+        String token = Peticiones.getPreference(getActivity(),getString(R.string.token));
         if (token != null){
             try {
-                id = String.valueOf(getIdUser(token).getId());
                 name = getIdUser(token).getNickname();
                 image = getIdUser(token).getImageUrl();
-                privilegio = getIdUser(token).getPwd();
 
                 txtNameProfile.setText(name);
                 JSONObject urlImage = new JSONObject(image);
                 String urlEdit = urlImage.getString("url").replace("w_1000","w_500,h_500");
                 Uri uriImage = Uri.parse(urlEdit);
 
-                Glide.with(getActivity())
+                Glide.with(requireActivity())
                         .load(uriImage)
                         .circleCrop()
                         .into(profileImage);
@@ -103,7 +94,7 @@ public class FragmentMas extends Fragment {
     private void logout() {
 
         btnLogout.setOnClickListener( v -> {
-            Peticiones.setToken(getActivity(), null);
+            Peticiones.setPreference(getActivity(), "token",null);
 
             Intent intent = new Intent(getActivity(), Login.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
