@@ -1,30 +1,73 @@
 <resources>
     <string name="app_name">Centro de Cómputo</string>
     <string name="Bienvenida">Bienvenidos</string>
-    <string name="Iniciar">Iniciar</string>
     <string name="Sesion">Iniciar Sesión</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="actividad">Actividad</string>
     <string name="reportes">Reportes</string>
     <string name="mas">Mas</string>
     <string name="labs">Labs</string>
     <string name="inicio">Inicio</string>
-    <string name="status">Status:</string>
     <string name="descripcioncontenido">TODO</string>
     <string name="aviso">Aviso</string>
-    <string name="libre">Libre</string>
-    <string name="ocupado">Ocupado</string>
     <string name="docente">Docente</string>
+    <string name="token">token</string>
+    <string name="panteras_tec">Logo de las panteras Tec</string>
+    <string name="imagen_perfil">Imagen del perfil de usuario</string>
+    <string name="laboratorios">Laboratorios</string>
+    <string name="input_usuario">Ingresa tu usuario</string>
+    <string name="input_pass">Ingresa tu contraseña</string>
+    <string name="alumnos_atendidos">Numero de Alumnos</string>
+    <string name="btn_descript_qr">Botón para escanear código qr</string>
+    <string name="btn_alumnos_atendidos">Alumnos atendidos</string>
+    <string name="nombre">Nombre</string>
+    <string name="usuario">Usuario</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="problema">Problema</string>
+    <string name="descripcion">Descripción</string>
+    <string name="reportar">Reportar</string>
+    <string name="guion">-</string>
+    <string name="floating_button_agregar">Ocupar Laboratorio sin Horario</string>
 
     <string-array name="labs">
-        <item>Lab 1</item>
-        <item>Lab 2</item>
-        <item>Lab 3</item>
-        <item>Lab 4</item>
+        <item>Laboratorio 1</item>
+        <item>Laboratorio 2</item>
+        <item>Laboratorio 3</item>
+        <item>Laboratorio 4</item>
     </string-array>
-    <string-array name="actividad">
-        <item>Clase</item>
-        <item>Práctica</item>
+
+    <string-array name="inicia">
+        <item>"07:00 AM"</item>
+        <item>"08:00 AM"</item>
+        <item>"09:00 AM"</item>
+        <item>"10:00 AM"</item>
+        <item>"11:00 AM"</item>
+        <item>"12:00 PM"</item>
+        <item>"01:00 PM"</item>
+        <item>"02:00 PM"</item>
+        <item>"03:00 PM"</item>
+        <item>"04:00 PM"</item>
+        <item>"05:00 PM"</item>
+        <item>"06:00 PM"</item>
+        <item>"07:00 PM"</item>
     </string-array>
+
+    <string-array name="dias">
+        <item>"Lunes"</item>
+        <item>"Martes"</item>
+        <item>"Miércoles"</item>
+        <item>"Jueves"</item>
+        <item>"Viernes"</item>
+        <item>"Sábado"</item>
+    </string-array>
+    <string name="title_activity_completar_registro">CompletarRegistro</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="enfocar_camara">Enfoca la cámara al QR</string>
 </resources>

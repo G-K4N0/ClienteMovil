@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,92 +8,46 @@
     tools:context=".RegistroHorario">
 
     <TextView
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:id="@+id/txtUsarMateria"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_marginStart="32dp"
-        android:gravity="center_horizontal"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/text_size_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvLaboratorio_titulo" />
 
     <TextView
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:id="@+id/txtUsarCarrera"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:gravity="center_horizontal"
         android:layout_height="50sp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/text_size_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUsarMateria" />
 
     <TextView
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:gravity="center_horizontal"
         android:id="@+id/txtUsarSemestre"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/text_size_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtUsarCarrera" />
-
-    <TextView
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:id="@+id/txtUsarModalidad"
-        android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:gravity="center_horizontal"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsarSemestre" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txtContainer_numero_alumnos"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        android:hint="Numero de Alumnos"
-        app:boxBackgroundMode="outline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFase"
-        app:passwordToggleTint="@color/naranja"
-        app:passwordToggleTintMode="screen">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtAlumnos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:imeOptions="actionDone"
-            android:singleLine="true" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-        android:id="@+id/txtFase"
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50sp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsarModalidad" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -101,19 +56,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="Actividad"
+        android:hint="@string/actividad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtFase">
+        app:layout_constraintTop_toBottomOf="@+id/txtUsarSemestre">
 
         <AutoCompleteTextView
             android:id="@+id/txtOpciones_actividad"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:simpleItems="@array/actividad"/>
+            android:labelFor="@id/txtOpciones_actividad"
+            android:textSize="@dimen/text_size_info" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
@@ -121,28 +77,24 @@
         android:layout_width="50sp"
         android:layout_height="50sp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Botón para escanear código qr"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="@string/btn_descript_qr"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtOpciones_actividad_registro" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btnDesocupar"
+    <TextView
+        android:id="@+id/tvLaboratorio_titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:text="Desocupar"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="64dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Laboratorio"
+        android:textSize="@dimen/titulo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtContainer_numero_alumnos" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
