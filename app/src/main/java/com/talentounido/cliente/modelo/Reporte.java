@@ -1,22 +1,23 @@
 package com.talentounido.cliente.modelo;
 
 public class Reporte {
-    private String laboratorio;
+    private int laboratorio;
     private String titulo;
     private String problema;
     private int idUsuario;
 
-    public Reporte( String laboratorio,String titulo, String problema, int idUsuario) {
+    public Reporte( int laboratorio,String titulo, String problema, int idUsuario) {
         this.titulo = titulo;
         this.problema = problema;
         this.idUsuario = idUsuario;
+        this.laboratorio = laboratorio;
     }
 
-    public String getLaboratorio() {
+    public int getLaboratorio() {
         return laboratorio;
     }
 
-    public void setLaboratorio(String laboratorio) {
+    public void setLaboratorio(int laboratorio) {
         this.laboratorio = laboratorio;
     }
 
