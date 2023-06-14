@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -17,7 +18,7 @@ import com.talentounido.cliente.fragmentos.FragmentLaboratorios;
 import com.talentounido.cliente.fragmentos.FragmentMas;
 import com.talentounido.cliente.fragmentos.FragmentReportes;
 
-public class Home extends AppCompatActivity implements  FragmentLaboratorios.OnFragmentInteractionListener{
+public class Home extends AppCompatActivity implements  FragmentLaboratorios.OnFragmentInteractionListener {
 
     FragmentInicio fragmentInicio = new FragmentInicio();
     FragmentLaboratorios fragmentLaboratorios = new FragmentLaboratorios();
@@ -30,6 +31,7 @@ public class Home extends AppCompatActivity implements  FragmentLaboratorios.OnF
         setContentView(R.layout.activity_home);
 
         BottomNavigationView navigation = findViewById(R.id.bottomNavigation);
+        navigation.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.naranja)));
         navigation.setOnItemSelectedListener (mOnNavigationListener);
         loadFragment(fragmentInicio);
     }
